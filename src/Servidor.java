@@ -33,96 +33,82 @@ class MarcoServidor extends JFrame implements Runnable{
 		add(milamina);
 		
 		setVisible(true);
-
+		
 		Thread mihilo = new Thread(this);
 
 		mihilo.start();
+		
 		}
+	
 
 	@Override
 	public void run() {
-
+		
 		try {
-			ServerSocket servidor = new ServerSocket(9999);
+			    ServerSocket servidorCliente = new ServerSocket(9999);
+			    ServerSocket servidorAgente = new ServerSocket(6666);
+			    
+			    String nick, ip, mensaje;
+			    String nick2, ip2, mensaje2;
 
-			String nick, ip, mensaje;
+				paqueteEnvio paquete_recibido1;
+				paqueteEnvio paquete_recibido2;
+			    
+			    while(true) {
+			    
+			    	Socket misocketCliente = servidorCliente.accept();
+			    	Socket misocketAgente = servidorAgente.accept();
 
-			ArrayList<String> listaIp = new ArrayList<String>();
+					ObjectInputStream paquete_datosCliente = new ObjectInputStream(misocketCliente.getInputStream());
+					ObjectInputStream paquete_datosAgente = new ObjectInputStream(misocketAgente.getInputStream());
 
-			paqueteEnvio paquete_recibido;
+					paquete_recibido1 = (paqueteEnvio) paquete_datosCliente.readObject();
+					paquete_recibido2 = (paqueteEnvio) paquete_datosAgente.readObject();
 
-			while (true){
+					nick = paquete_recibido1.getNick();
+					ip = paquete_recibido1.getIp();
+					mensaje = paquete_recibido1.getMensaje();
+					
+					nick2 = paquete_recibido2.getNick();
+					ip2 = paquete_recibido2.getIp();
+					mensaje2 = paquete_recibido2.getMensaje();
 
-				Socket misocket = servidor.accept();
+					/*DataInputStream flujo_entrada = new DataInputStream(misocket.getInputStream());
 
-				ObjectInputStream paquete_datos = new ObjectInputStream(misocket.getInputStream());
+					String mensaje_texto = flujo_entrada.readUTF();
 
-				paquete_recibido = (paqueteEnvio) paquete_datos.readObject();
+					areatexto.append("\n" + mensaje_texto);*/
 
-				nick = paquete_recibido.getNick();
-				ip = paquete_recibido.getIp();
-				mensaje = paquete_recibido.getMensaje();
+					areatexto.append("\n" + nick + ": " + mensaje + " para " + ip);
+					areatexto.append("\n" + nick2 + ": " + mensaje2 + " para " + ip2);
 
-				/*DataInputStream flujo_entrada = new DataInputStream(misocket.getInputStream());
+					Socket enviaDestinatarioCliente = new Socket(ip, 9090);
+					Socket enviaDestinatarioAgente = new Socket(ip, 9089);
 
-				String mensaje_texto = flujo_entrada.readUTF();
+					ObjectOutputStream paqueteReenvioCliente = new ObjectOutputStream(enviaDestinatarioCliente.getOutputStream());
+					ObjectOutputStream paqueteReenvioAgente = new ObjectOutputStream(enviaDestinatarioAgente.getOutputStream());
 
-				areatexto.append("\n" + mensaje_texto);*/
+					paqueteReenvioCliente.writeObject(paquete_recibido1);
+					paqueteReenvioAgente.writeObject(paquete_recibido2);
 
-				if(!mensaje.equals(" online")){
+					paqueteReenvioCliente.close();
+					paqueteReenvioAgente.close();
 
-				areatexto.append("\n" + nick + ": " + mensaje + " para " + ip);
+					enviaDestinatarioCliente.close();
+					enviaDestinatarioAgente.close();
 
-				Socket enviaDestinatario = new Socket(ip, 9090);
-
-				ObjectOutputStream paqueteReenvio = new ObjectOutputStream(enviaDestinatario.getOutputStream());
-
-				paqueteReenvio.writeObject(paquete_recibido);
-
-				paqueteReenvio.close();
-
-				enviaDestinatario.close();
-
-				misocket.close();
-				}else{
-
-					//---------------------------DETECTA ONLINE---------------------------------------------
-
-					InetAddress localizacion = misocket.getInetAddress();
-
-					String ipRemota=localizacion.getHostAddress();
-
-					System.out.println("Online " + ipRemota);
-
-					listaIp.add(ipRemota);
-
-					paquete_recibido.setIps(listaIp);
-
-					for (String z:listaIp){
-						System.out.println("Array: " + z);
-
-						Socket enviaDestinatario = new Socket(z, 9090);
-
-						ObjectOutputStream paqueteReenvio = new ObjectOutputStream(enviaDestinatario.getOutputStream());
-
-						paqueteReenvio.writeObject(paquete_recibido);
-
-						paqueteReenvio.close();
-
-						enviaDestinatario.close();
-
-						misocket.close();
-					}
-
-					//---------------------------------------------------------------------------------------
-
-				}
-			}
+					misocketCliente.close();
+					misocketAgente.close();
+				
+			    }
 
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
+			System.out.println(e);
 		}
+		
+		
 	}
-
+	
 	private	JTextArea areatexto;
 }

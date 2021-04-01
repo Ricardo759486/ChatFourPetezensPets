@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad963142-b708-496c-9688-9f028dbdf072" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Servidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cliente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,13 +33,21 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SocketWithThreads" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\cueva\ChatFourPetezensPets\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Cliente">
+  <component name="RunManager" selected="Application.Agente">
+    <configuration name="Agente" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Agente" />
+      <module name="ChatFourPetezensPets" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CapitalizeClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CapitalizeClient" />
       <module name="ChatFourPetezensPets" />
@@ -51,13 +57,6 @@
     </configuration>
     <configuration name="CapitalizeServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CapitalizeServer" />
-      <module name="ChatFourPetezensPets" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ChatClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ChatClient" />
       <module name="ChatFourPetezensPets" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -77,26 +76,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Cliente" />
+        <item itemvalue="Application.Agente" />
         <item itemvalue="Application.Servidor" />
+        <item itemvalue="Application.Cliente" />
         <item itemvalue="Application.CapitalizeClient" />
         <item itemvalue="Application.CapitalizeServer" />
-        <item itemvalue="Application.ChatClient" />
       </list>
     </recent_temporary>
   </component>
@@ -114,6 +100,10 @@
       <workItem from="1617068374740" duration="2529000" />
       <workItem from="1617138497000" duration="6142000" />
       <workItem from="1617145926620" duration="6176000" />
+      <workItem from="1617169071683" duration="511000" />
+      <workItem from="1617175349498" duration="64000" />
+      <workItem from="1617175599501" duration="34000" />
+      <workItem from="1617207016983" duration="556000" />
     </task>
     <servers />
   </component>
