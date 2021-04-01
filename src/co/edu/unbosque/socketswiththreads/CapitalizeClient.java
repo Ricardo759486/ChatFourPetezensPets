@@ -46,7 +46,8 @@ public class CapitalizeClient {
               		var especie = in.nextLine();
               		System.out.println("Tamaño");
               		out.println(scanner.nextLine());
-              		var tamaño = in.nextLine();
+              		var tamanio = in.nextLine();
+              		System.out.println(tamanio);
               		System.out.println("Localidad");
               		out.println(scanner.nextLine());
               		var localidad = in.nextLine();
@@ -70,7 +71,7 @@ public class CapitalizeClient {
      
               		System.out.println("Su caso ha sido creado");
               		
-              		System.out.println("Id: " + id + "   " + especie + tamaño + localidad + direccion + nombre + telefono + email + comentario);
+              		System.out.println("Id: " + id + "   " + especie + tamanio + localidad + direccion + nombre + telefono + email + comentario);
               	}
               	
               break;

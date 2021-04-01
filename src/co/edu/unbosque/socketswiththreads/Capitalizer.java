@@ -25,7 +25,7 @@ public class Capitalizer implements Runnable {
 
             var in = new Scanner(socketCliente.getInputStream());
             var out = new PrintWriter(socketCliente.getOutputStream(), true);
-            int contador= 0;
+
             
 //            var inA = new Scanner(socketAgente.getInputStream());
 //            var outA = new PrintWriter(socketAgente.getOutputStream(), true);
@@ -74,7 +74,6 @@ public class Capitalizer implements Runnable {
 //            		}
 //            	}else if(validacion == 0){
             	
-            	if(contador <= 2) {
             		var desicion = in.nextLine();
                     safePrintln("The message received is: " + desicion);
                     
@@ -82,22 +81,9 @@ public class Capitalizer implements Runnable {
                     //var newMessage = message2.toUpperCase();
                     safePrintln("The message to be returned is: " + desicion);
                     out.println(desicion);
-                    contador++;
+
             		
-            	}else {
             		
-            	
-            	in.nextLine();
-            	var desicion = in.nextLine();
-                safePrintln("The message received is: " + desicion);
-                
-                //safePrintln("The message received is: " + message2);
-                //var newMessage = message2.toUpperCase();
-                safePrintln("The message to be returned is: " + desicion);
-                out.println(desicion);
-                contador++;
-            	
-            	}	
             		
             		
             	//} 
