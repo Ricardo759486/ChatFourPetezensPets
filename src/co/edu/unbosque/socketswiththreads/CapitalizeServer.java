@@ -22,14 +22,14 @@ public class CapitalizeServer {
      */
     public static void main(String[] args) throws Exception {
 
-        try (var listener = new ServerSocket(59897)/*; var listener2 = new ServerSocket(9999)*/) {
+        try (var listener = new ServerSocket(59897); var listener2 = new ServerSocket(9999)) {
 
             System.out.println("The capitalization server is running...");
 
             var pool = Executors.newFixedThreadPool(20);
 
             while (true) {
-                pool.execute(new Capitalizer(listener.accept()/*, listener2.accept()*/));
+                pool.execute(new Capitalizer(listener.accept(), listener2.accept()));
             }
 
         }
