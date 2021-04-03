@@ -41,9 +41,9 @@ public class Capitalizer implements Runnable {
 						var mensajeAgente = "(1) Aceptar (2) Denegar";
 						outA.println(mensajeAgente);
 						out.println(desicion);
-						var aceptacion = inA.nextInt();
+						var aceptacion1 = inA.nextLine();
 
-						if (aceptacion == 1) {
+						if (aceptacion1.equals("1")) {
 
 							validacion = 3;
 							out.println(9);
@@ -60,8 +60,10 @@ public class Capitalizer implements Runnable {
 				if (validacion == 3) {
 
 					if (turno == 1) {
+						
 						var agente = inA.nextLine();
-						out.println(agente + 1);
+						out.println(agente);
+//						safePrintln("The message received is: " + inA.nextLine());
 						turno = 2;
 						break;
 					}
@@ -76,7 +78,7 @@ public class Capitalizer implements Runnable {
 					var desicion = in.nextLine();
 					safePrintln("The message received is: " + desicion);
 
-					// safePrintln("The message received is: " + message2);
+					
 					// var newMessage = message2.toUpperCase();
 					safePrintln("The message to be returned is: " + desicion);
 					out.println(desicion);

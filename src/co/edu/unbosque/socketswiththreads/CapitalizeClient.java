@@ -1,5 +1,6 @@
 package co.edu.unbosque.socketswiththreads;
 
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
@@ -78,26 +79,13 @@ public class CapitalizeClient {
 
 					System.out.println("Por favor espere a que un agente lo pueda atender....\n No se desconecte");
 
-					var paqueteRecibido = in.nextInt();
-
-					if (paqueteRecibido != 8) {
-
-						while (true) {
-
-							var mensajeAsesor = in.nextLine();
-
-							if (!mensajeAsesor.equals("")) {
-
-								System.out.println(mensajeAsesor);
-
-								out.println(scanner.nextLine());
-
-							}
-
+					if (in.nextLine().equals("9")) {
+						System.out.println("Holiwis");
+						while (in.hasNextLine()) {
+							System.out.println(in.nextLine());
+							out.println(scanner.nextLine());
 						}
-
 					} else {
-
 						System.out.println("En este momento no podemos comunicarlo con ningun asesor.");
 					}
 
