@@ -17,75 +17,96 @@ public class Capitalizer implements Runnable {
 
 	@Override
 	public void run() {
-
+		
 		safePrintln("Connected: " + socketCliente);
 		safePrintln("Connected: " + socketAgente);
-
+		
+		
 		try {
-
+			
+			var scanner = new Scanner(System.in);
+			
 			var in = new Scanner(socketCliente.getInputStream());
 			var out = new PrintWriter(socketCliente.getOutputStream(), true);
-
-			var inA = new Scanner(socketAgente.getInputStream());
-			var outA = new PrintWriter(socketAgente.getOutputStream(), true);
-			System.out.println(in.nextLine());
-			var validacion = 0;
-			var turno = 1;
-
+			
+			var in1 = new Scanner(socketAgente.getInputStream());
+			var out1 = new PrintWriter(socketAgente.getOutputStream(), true);
+			
+			out.println("Bienvenido al chat de 4 patas - (1) Crear caso. (2) Hablar con un agente.");
+			
 			while (in.hasNextLine()) {
+				var mensaje = in.nextLine();
 
-				if (validacion == 0) {
-					var desicion = in.nextInt();
-					if (desicion == 2) {
+				switch (mensaje) {
 
-						var mensajeAgente = "(1) Aceptar (2) Denegar";
-						outA.println(mensajeAgente);
-						out.println(desicion);
-						var aceptacion1 = inA.nextLine();
-
-						if (aceptacion1.equals("1")) {
-
-							validacion = 3;
-							out.println(9);
-
-						} else {
-
-							out.println(8);
-
-						}
-					}
-
-				}
-
-				if (validacion == 3) {
-
-					if (turno == 1) {
-						
-						var agente = inA.nextLine();
-						out.println(agente);
-//						safePrintln("The message received is: " + inA.nextLine());
-						turno = 2;
-						break;
-					}
-
-					if (turno == 2) {
-						var cliente = in.nextLine();
-						outA.println(cliente + 2);
-						turno = 1;
-					}
-				} else if (validacion == 0) {
+				case "1":
+		
+					out.println("(1) Pérdida. (2) Robo. (3) Abandono. (4) Animal peligroso. (5) Manejo indebido en vía pública.");
+					
 
 					var desicion = in.nextLine();
-					safePrintln("The message received is: " + desicion);
-
 					
-					// var newMessage = message2.toUpperCase();
-					safePrintln("The message to be returned is: " + desicion);
-					out.println(desicion);
+					if (desicion.equals("1") || desicion.equals("2") || desicion.equals("3") || desicion.equals("4")
+							|| desicion.equals("5")) {
 
-				}
-			}
+						out.println("Por favor ingrese los siguientes datos:");
+						out.println("Especie");
+						out.println(scanner.nextLine());
+						var especie = in.nextLine();
+						out.println("Tamaño");
+						out.println(scanner.nextLine());
+						var tamanio = in.nextLine();
+						out.println(tamanio);
+						out.println("Localidad");
+						out.println(scanner.nextLine());
+						var localidad = in.nextLine();
+						out.println("Dirección");
+						out.println(scanner.nextLine());
+						var direccion = in.nextLine();
+						out.println("Nombre completo de la persona que reporta");
+						out.println(scanner.nextLine());
+						var nombre = in.nextLine();
+						out.println("Teléfono de la persona que reporta");
+						out.println(scanner.nextLine());
+						var telefono = in.nextLine();
+						out.println("Email de la persona que reporta");
+						out.println(scanner.nextLine());
+						var email = in.nextLine();
+						out.println("Comentarios generales");
+						out.println(scanner.nextLine());
+						var comentario = in.nextLine();
 
+						var id = Math.floor(Math.random() * (1000 - 1)) + 1;
+
+						System.out.println("Su caso ha sido creado");
+
+						System.out.println("Id: " + id + "   " + especie + tamanio + localidad + direccion + nombre
+								+ telefono + email + comentario);
+					}
+
+					break;
+
+				case "2":
+
+					System.out.println("Por favor espere a que un agente lo pueda atender....\n No se desconecte");
+
+					if (in.nextLine().equals("9")) {
+						System.out.println("Holiwis");
+						while (in.hasNextLine()) {
+							System.out.println(in.nextLine());
+							out.println(scanner.nextLine());
+						}
+					} else {
+						System.out.println("En este momento no podemos comunicarlo con ningun asesor.");
+					}
+
+					break;
+
+				default:
+
+					System.out.println("Por favor ingrese una de los opciones(1 o 2).");
+
+				}}
 		} catch (Exception e) {
 			safePrintln("Error:" + socketCliente);
 			safePrintln("Error:" + socketAgente);
