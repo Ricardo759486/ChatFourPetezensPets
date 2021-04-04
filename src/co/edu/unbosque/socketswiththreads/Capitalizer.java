@@ -78,9 +78,9 @@ public class Capitalizer implements Runnable {
 
 						var id = Math.floor(Math.random() * (1000 - 1)) + 1;
 
-						System.out.println("Su caso ha sido creado");
+						out.println("Su caso ha sido creado");
 
-						System.out.println("Id: " + id + "   " + especie + tamanio + localidad + direccion + nombre
+						out.println("Id: " + id + "   " + especie + tamanio + localidad + direccion + nombre
 								+ telefono + email + comentario);
 					}
 
@@ -88,25 +88,32 @@ public class Capitalizer implements Runnable {
 
 				case "2":
 
-					System.out.println("Por favor espere a que un agente lo pueda atender....\n No se desconecte");
-
-					if (in.nextLine().equals("9")) {
-						System.out.println("Holiwis");
-						while (in.hasNextLine()) {
-							System.out.println(in.nextLine());
-							out.println(scanner.nextLine());
+					out.println("Por favor espere a que un agente lo pueda atender.... No se desconecte");
+					out1.println("(1) Aceptar. (2) Denegar.");
+					
+				
+					if (in1.nextLine().equals("1")) {
+						
+						while (true) {
+							var agente = in1.nextLine();
+							out.println(agente);
+							var cliente = in.nextLine();
+							out1.println(cliente);
+							
+							
 						}
 					} else {
-						System.out.println("En este momento no podemos comunicarlo con ningun asesor.");
+						out.println("En este momento no podemos comunicarlo con ningun asesor.");
 					}
 
 					break;
 
 				default:
 
-					System.out.println("Por favor ingrese una de los opciones(1 o 2).");
+						out.println("Por favor ingrese una de los opciones(1 o 2).");
 
-				}}
+					}
+				}
 		} catch (Exception e) {
 			safePrintln("Error:" + socketCliente);
 			safePrintln("Error:" + socketAgente);

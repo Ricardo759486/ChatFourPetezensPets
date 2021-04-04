@@ -26,9 +26,9 @@ public class CapitalizeClient {
                 System.out.println(in.nextLine());
             }
 
-		  }
-
 		}
 
 	}
+
+}
 
