@@ -19,21 +19,24 @@ public class CapitalizeClient {
 			var scanner = new Scanner(System.in);
 			var in = new Scanner(socket.getInputStream());
 			var out = new PrintWriter(socket.getOutputStream(), true);
-
+			
+			String mensaje = "";
 			while (scanner.hasNextLine()) {
-				out.println(scanner.nextLine());
+				mensaje = scanner.nextLine();
+				out.println(mensaje);
 
-				switch (in.nextLine()) {
+				switch (mensaje) {
 
 				case "1":
 
 					System.out.println("(1) Pérdida.\r\n" + "(2) Robo.\r\n" + "(3) Abandono.\r\n"
 							+ "(4) Animal peligroso.\r\n" + "(5) Manejo indebido en vía pública.\r\n");
-
-					out.println(scanner.nextLine());
+					
+					String mensaje2 = scanner.nextLine();
+					out.println(mensaje2);
 
 					var desicion = in.nextLine();
-
+					System.out.println(desicion);
 					if (desicion.equals("1") || desicion.equals("2") || desicion.equals("3") || desicion.equals("4")
 							|| desicion.equals("5")) {
 
@@ -60,7 +63,6 @@ public class CapitalizeClient {
 						System.out.println("Email de la persona que reporta");
 						out.println(scanner.nextLine());
 						var email = in.nextLine();
-						;
 						System.out.println("Comentarios generales");
 						out.println(scanner.nextLine());
 						var comentario = in.nextLine();

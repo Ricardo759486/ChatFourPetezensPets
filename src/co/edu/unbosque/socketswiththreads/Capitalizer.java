@@ -28,7 +28,7 @@ public class Capitalizer implements Runnable {
 
 			var inA = new Scanner(socketAgente.getInputStream());
 			var outA = new PrintWriter(socketAgente.getOutputStream(), true);
-
+			System.out.println(in.nextLine());
 			var validacion = 0;
 			var turno = 1;
 
