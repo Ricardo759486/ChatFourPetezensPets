@@ -1,9 +1,12 @@
 package co.edu.unbosque.socketswiththreads;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
+
+import com.opencsv.CSVWriter;
 
 public class Capitalizer implements Runnable {
 
@@ -50,30 +53,21 @@ public class Capitalizer implements Runnable {
 							|| desicion.equals("5")) {
 
 						out.println("Por favor ingrese los siguientes datos:");
-						out.println("Especie");
-						out.println(scanner.nextLine());
+						out.println("Especie");						
 						var especie = in.nextLine();
 						out.println("Tamaño");
-						out.println(scanner.nextLine());
 						var tamanio = in.nextLine();
-						out.println(tamanio);
 						out.println("Localidad");
-						out.println(scanner.nextLine());
 						var localidad = in.nextLine();
 						out.println("Dirección");
-						out.println(scanner.nextLine());
 						var direccion = in.nextLine();
 						out.println("Nombre completo de la persona que reporta");
-						out.println(scanner.nextLine());
 						var nombre = in.nextLine();
 						out.println("Teléfono de la persona que reporta");
-						out.println(scanner.nextLine());
 						var telefono = in.nextLine();
 						out.println("Email de la persona que reporta");
-						out.println(scanner.nextLine());
 						var email = in.nextLine();
 						out.println("Comentarios generales");
-						out.println(scanner.nextLine());
 						var comentario = in.nextLine();
 
 						var id = Math.floor(Math.random() * (1000 - 1)) + 1;
@@ -82,6 +76,12 @@ public class Capitalizer implements Runnable {
 
 						out.println("Id: " + id + "   " + especie + tamanio + localidad + direccion + nombre
 								+ telefono + email + comentario);
+						
+						CSVWriter writer = new CSVWriter (new FileWriter("Data//Case.csv"));
+						String [] archivo = {especie, tamanio, localidad, direccion, nombre, telefono, email, comentario};
+						writer.writeNext(archivo);
+						writer.close();
+						
 					}
 
 					break;
