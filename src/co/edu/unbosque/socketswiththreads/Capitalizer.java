@@ -50,35 +50,36 @@ public class Capitalizer implements Runnable {
 					var desicion = in.nextLine();
 					
 					if (desicion.equals("1") || desicion.equals("2") || desicion.equals("3") || desicion.equals("4")
-							|| desicion.equals("5")) {
-
-						out.println("Por favor ingrese los siguientes datos:");
-						out.println("Especie");						
+							|| desicion.equals("5")) {							
+		
+						out.println("Por favor ingrese los siguientes datos: (enter)");
+						out.println("Especie: ");						
 						var especie = in.nextLine();
-						out.println("Tamaño");
+						out.println("Tamaño: ");
 						var tamanio = in.nextLine();
-						out.println("Localidad");
+						out.println("Localidad: ");
 						var localidad = in.nextLine();
-						out.println("Dirección");
+						out.println("Dirección: ");
 						var direccion = in.nextLine();
-						out.println("Nombre completo de la persona que reporta");
+						out.println("Nombre completo de la persona que reporta: ");
 						var nombre = in.nextLine();
-						out.println("Teléfono de la persona que reporta");
+						out.println("Teléfono de la persona que reporta: ");
 						var telefono = in.nextLine();
-						out.println("Email de la persona que reporta");
+						out.println("Email de la persona que reporta: ");
 						var email = in.nextLine();
-						out.println("Comentarios generales");
+						out.println("Comentarios generales: ");
 						var comentario = in.nextLine();
 
-						var id = Math.floor(Math.random() * (1000 - 1)) + 1;
+						int id = (int) (Math.floor(Math.random() * (1000 - 1)) + 1);
+						String idA = id+"";
+						out.println("Su caso ha sido creado correctamente");
 
-						out.println("Su caso ha sido creado");
-
-						out.println("Id: " + id + "   " + especie + tamanio + localidad + direccion + nombre
+						out.println("Id: " + idA + "   " + especie + tamanio + localidad + direccion + nombre
 								+ telefono + email + comentario);
 						
+						
 						CSVWriter writer = new CSVWriter (new FileWriter("Data//Case.csv"));
-						String [] archivo = {especie, tamanio, localidad, direccion, nombre, telefono, email, comentario};
+						String [] archivo = {idA, especie, tamanio, localidad, direccion, nombre, telefono, email, comentario};
 						writer.writeNext(archivo);
 						writer.close();
 						
@@ -96,9 +97,9 @@ public class Capitalizer implements Runnable {
 						
 						while (true) {
 							var agente = in1.nextLine();
-							out.println(agente);
+							out.println("Agente: " + agente);
 							var cliente = in.nextLine();
-							out1.println(cliente);
+							out1.println("Cliente: " + cliente);
 							
 							
 						}
